@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+
+import './global.css'
+
+import Routes from './routes'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Semana OmniStack
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Routes/>
+  )
 }
 
-export default App;
+export default App
+
+
+// Componente é uma função javascript que retorna conteudo hmtl.
+// JSX é quando html é usado dentro do javascript.
+// Estado é um informação mantida pelo componente e não pode ser alterada diretamente(imutabilidade), por isso usaremos o useState.
+// 
