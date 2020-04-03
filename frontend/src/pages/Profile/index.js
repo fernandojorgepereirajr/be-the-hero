@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react'
+
+// Importando o sistema de rotas que permite a transição entre as páginas.
 import { Link, useHistory } from 'react-router-dom'
+
+// Importando os ícones
 import { FiPower, FiTrash2 } from 'react-icons/fi'
 
+// Importando a api de comunicação da página com o backend.
 import api from '../../services/api'
 
+// Importando a estilização da tela.
 import './styles.css'
 
+// Importando as imagens que são usados na aplicação.
 import logoImg from '../../assets/logo.svg'
 
+// Criando a função principal, ou seja, minha página de perfil.
 export default function Profile() {
+    // Variaveis presentes no estado global da função e suas funções de modificações.
     const [incidents, setIncidents] = useState([])
 
     const history = useHistory()
@@ -25,11 +34,12 @@ export default function Profile() {
             setIncidents(response.data)
         })
     }, [ongId])
-
-    async function handleDeleteIncident(id){
+    
+    // Função responsável por efetuar e  permitir que um caso seja deletado.
+    async function handleDeleteIncident(id) {
         try {
-            await api.delete(`incident/${id}`,{
-                headers:{
+            await api.delete(`incident/${id}`, {
+                headers: {
                     Authorization: ongId
                 }
             })
@@ -39,12 +49,14 @@ export default function Profile() {
             alert('Erro ao deletar caso, tente novamente.')
         }
     }
-    function handleLogout(){
+
+    // Função responsável por efetuar e  permitir logout.
+    function handleLogout() {
         localStorage.clear()
 
         history.push('/')
     }
-
+    // Estrutura em XML que será renderizada na minha página.
     return (
         <div className='profile-container'>
             <header>
@@ -67,9 +79,9 @@ export default function Profile() {
                         <p>{incident.description}</p>
 
                         <strong>Valor:</strong>
-                        <p>{Intl.NumberFormat('pt-BR', {style : 'currency', currency:'BRL'}).format(incident.value)}</p>
+                        <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(incident.value)}</p>
 
-                        <button type='button' onClick={ () => handleDeleteIncident(incident)} >
+                        <button type='button' onClick={() => handleDeleteIncident(incident)} >
                             <FiTrash2 size={20} color='#a8a8b3' />
                         </button>
                     </li>

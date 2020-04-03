@@ -1,13 +1,15 @@
 import React from 'react'
 
+// Importando a estilização básica para toda a aplicação.
 import './global.css'
 
+//Importanod o componente responsavel por estabelecer as rotas.
 import Routes from './routes'
 
 
 function App() {
   return (
-    <Routes/>
+    <Routes />
   )
 }
 
