@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from 'react'
+
+// Importando os ícones
 import { Feather } from '@expo/vector-icons'
+
+// Importando o sistema de rotas que permite a transição entre as páginas.
 import { useNavigation } from '@react-navigation/native'
+
+// Importando os componentes em linguagem nativa. 
 import { View, FlatList, Image, Text, TouchableOpacity } from 'react-native'
 
+// Importando a api de comunicação da página com o backend.
 import api from '../../services/api'
 
+// Importando as imagens que são usados na aplicação.
 import logoImg from '../../assets/logo.png'
 
+// Importando a estilização da tela.
 import styles from './styles'
 
 export default function Incidents() {
+    // Variaveis presentes no estado global da função e suas funções de modificações.
     const [incidents, setIncidents] = useState([])
     const [total, setTotal] = useState(0)
     const [page, setPage] = useState(1)
@@ -17,9 +27,12 @@ export default function Incidents() {
 
     const navigation = useNavigation()
 
+    // Função responsável por fazer a navegação para a tela de detalhes.
     function navigateToDetail(incident) {
         navigation.navigate('Detail', { incident })
     }
+
+    // Função responsável por carregar os casos.
     async function loadIncidents() {
         if (loading) {
             return
@@ -43,6 +56,7 @@ export default function Incidents() {
         loadIncidents()
     }, [])
 
+    // Estrutura XML em linguagem nativa que será renderizado na tela.
     return (
         <View style={styles.container}>
             <View style={styles.header}>

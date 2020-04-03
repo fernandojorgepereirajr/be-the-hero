@@ -3,13 +3,12 @@ import 'intl/locale-data/jsonp/pt-BR'
 
 import React from 'react';
 
+// Importando nosso componente responsável por gerenciar as rotas e a paginação.
 import Routes from './src/routes'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello OmniStack</Text>
-    </View>
+    <Routes/>
   );
 }
 

@@ -1,11 +1,21 @@
 import React from 'react'
+
+// Importando os ícones
 import { Feather } from '@expo/vector-icons'
+
+// Importando o sistema de rotas que permite a transição entre as páginas.
 import { useNavigation, useRoute } from '@react-navigation/native'
+
+// Importando os componentes em linguagem nativa. 
 import { View, Image, TouchableOpacity, Text, Linking } from 'react-native'
+
+// Importando o serviço que permite interligar ao e-mail.
 import * as MailComposer from 'expo-mail-composer'
 
+// Importando a estilização da tela.
 import styles from './styles'
 
+// Importando as imagens que são usados na aplicação.
 import logoImg from '../../assets/logo.png'
 
 export default function Detail() {
@@ -15,20 +25,25 @@ export default function Detail() {
     const incident = route.params.incident
     const message = `Olá ${incident.name}, estou entrado em contato pois gostaria de ajudar no caso "${incident.title}" com o valor de ${Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(incident.value)}`
 
+    // Função responsável por fazer a navegação para a tela anterior.
     function navigateBack() {
         navigation.goBack()
     }
-    sendEmail(){
+
+    // Função responsável por envio do e-mail.
+    function sendEmail() {
         MailComposer.composeAsync({
             subject: `Herói do caso: ${incident.title}`,
             recipients: [incident.email],
             body: message,
         })
     }
-    sendWhatsapp(){
+
+    // Função responsável por envio do whatsapp.
+    function sendWhatsapp() {
         Linking.openURL(`whatsapp://send?phone=${incident.whatsapp}&text=${message}`)
     }
-
+    // Estrutura XML em linguagem nativa que será renderizado na tela.
     return (
         <View style={styles.container}>
             <View style={styles.header}>
