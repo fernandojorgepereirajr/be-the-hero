@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 import Constants from 'expo-constants'
 
 
-export default function StyleSheet.create({
+export default  StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 24,
